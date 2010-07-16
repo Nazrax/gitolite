@@ -157,8 +157,16 @@ to 1 to enable it.
 The second is a very useful optimisation that you *must* enable if you *do*
 have a large number of repositories, and do *not* use gitolite's support for
 gitweb or git-daemon access (see "[easier to specify gitweb description and
-gitweb/daemon access][gw]" for details).  This will save a lot of time when
-you push the gitolite-admin repo with changes.
+gitweb/daemon access][gw]" for details) and do not specify "git config"
+settings via gitolite.  This will save a lot of time when you push the
+gitolite-admin repo with changes.
+
+In fact anything that requires trawling through the existing repos doing stuff
+to all of them is skipped if this variable is set.  This is primarily for the
+Fedora folks, but it should be useful for anyone who has a huge set of repos
+and wants to manage gitweb/daemon/etc access via other means (they typically
+have the whole thing controlled by a web-app and a database anyway, and
+gitolite is only doing the access control and nothing more).
 
 [gw]: http://github.com/sitaramc/gitolite/blob/pu/doc/3-faq-tips-etc.mkd#gitweb
 
